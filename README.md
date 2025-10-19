@@ -172,17 +172,37 @@ deactivate
 
 ---
 
-## 5. MLFlow <a class="anchor" id="mlflow"></a>
+## 5. MLflow Experiment Tracking <a class="anchor" id="mlflow"></a>
 
-**MLflow** is used to manage and track machine learning experiments, parameters, and metrics.  
-It enables reproducibility and helps identify the best-performing models.
+**MLflow** is used to manage and track machine-learning experiments, parameters, metrics, and artifacts.  
+It ensures **reproducibility** and provides a clean interface for comparing model runs.
 
-Follow the [MLflow Quickstart Guide](https://www.mlflow.org/docs/2.7.1/quickstart.html#quickstart) to:
-- Log experiments  
-- Compare model performance  
-- Track hyperparameter tuning
+### 🔹 What is Logged
+- Model parameters – algorithm, TF-IDF configuration, dataset details  
+- Performance metrics – training and validation accuracy  
+- Artifacts – trained model and confusion-matrix plot (`confusion_matrix.png`)  
+- (Optional) Input example – for automatic model-signature inference
 
----
+### 🔹 Example MLflow Code
+```python
+import mlflow
+import mlflow.sklearn
+
+mlflow.set_tracking_uri("file:///C:/Users/lbarrett/mlruns")
+
+with mlflow.start_run(run_name="News_Classifier_Final"):
+    mlflow.log_param("Model", "LogisticRegression")
+    mlflow.log_param("Vectorizer", "TF-IDF (max_features=5000, ngram_range=(1,2))")
+    mlflow.log_metric("Training Accuracy", float(train_accuracy))
+    mlflow.log_metric("Validation Accuracy", float(test_accuracy))
+    mlflow.sklearn.log_model(model, name="model")
+
+    # Log confusion matrix image
+    plt.savefig("confusion_matrix.png")
+    mlflow.log_artifact("confusion_matrix.png")
+
+print("✅ MLflow experiment and confusion matrix logged successfully!")
+
 
 ## 6. Streamlit <a class="anchor" id="streamlit"></a>
 
