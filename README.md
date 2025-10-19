@@ -1,4 +1,5 @@
-# 2501PTDS_Classification_Project  
+# 2501PTDS_Classification_Project
+# Lorian Barrett (Individual Project)
 ## Analysing News Articles Dataset
 
 ![](https://img.shields.io/badge/Python-3776AB.svg?style=for-the-badge&logo=Python&logoColor=white) [![Streamlit App](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](URL_TO_YOUR_APP)
@@ -20,6 +21,7 @@
 * [6. Streamlit](#streamlit)
 * [7. Team Members](#team-members)
 * [8. Troubleshooting](#troubleshooting)
+* [9. Results Summary](#results-summary)
 
 ---
 
@@ -276,3 +278,34 @@ Your model will now be live and shareable via a public URL 🎉
 | Streamlit app not launching | Check that all required libraries are installed, then rerun `streamlit run base_app.py`. |
 
 ---
+
+
+---
+
+## 9. Results Summary <a class="anchor" id="results-summary"></a>
+
+### 📈 Model Performance
+The Logistic Regression classifier achieved **excellent overall accuracy** on the test dataset.
+
+| Metric | Result |
+|---------|---------|
+| **Training Accuracy** | ~99 % |
+| **Validation Accuracy** | ~97 % |
+| **Best-performing Categories** | Education & Entertainment |
+| **Minor Misclassifications** | Business ↔ Technology, Sports ↔ Entertainment |
+
+### 🧩 Interpretation
+- The **confusion matrix** confirms high model accuracy and strong category separation.  
+- Minor confusion between Business and Technology is expected due to overlapping language and shared terminology.  
+- MLflow tracking ensures reproducibility by logging parameters, metrics, and the confusion-matrix artifact for every run.
+
+### 🚀 Deployment Impact
+The final model was deployed with **Streamlit**, allowing users to:
+- Input any news headline or article,  
+- Instantly receive a **predicted category** and **confidence score**, and  
+- Visualize category probabilities through a dynamic bar chart.
+
+This completes an **end-to-end NLP project** — from raw data → model training → evaluation → interactive deployment.
+
+---
+
