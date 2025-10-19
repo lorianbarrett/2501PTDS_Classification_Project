@@ -1,0 +1,14 @@
+artifact_uri: mlflow-artifacts:/0/60359d3f33ad4de99d6e35617fc3df62/artifacts
+end_time: 1760898159284
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: 60359d3f33ad4de99d6e35617fc3df62
+run_name: Test_Run
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1760898159238
+status: 3
+tags: []
+user_id: lbarrett

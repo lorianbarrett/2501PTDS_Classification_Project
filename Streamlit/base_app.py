@@ -121,47 +121,58 @@ def main():
     # Building out the prediction page
     if selection == "Prediction":
         st.info("Prediction with ML Models")
-        
-        # Creating a text box for user input
+
+        # --- Function to clear text ---
+        def clear_text():
+            st.session_state.article_input = ""
+
+        # --- User input text area ---
         news_text = st.text_area(
-            "Enter News Article Text", 
+            "Enter News Article Text",
             placeholder="Paste your news article here...",
-            height=200
+            height=200,
+            key="article_input"
         )
-        
-        if st.button("Classify"):
+
+        # --- Two buttons side-by-side ---
+        col1, col2 = st.columns([1, 1])
+        with col1:
+            classify_button = st.button("🔍 Classify")
+        with col2:
+            clear_button = st.button("🧹 Clear Text", on_click=clear_text)
+
+        # --- Classification logic ---
+        if classify_button:
             if news_text.strip():
                 try:
-                    # Preprocess the text
                     processed_text = process_text_pro(news_text)
-                    
-                    # Transform with the same vectorizer used in training
                     vect_text = vectorizer.transform([processed_text])
-                    
-                    # Make prediction
                     prediction = model.predict(vect_text)[0]
-                    
-                    # Get prediction probabilities for confidence
                     probabilities = model.predict_proba(vect_text)[0]
                     confidence = max(probabilities) * 100
-                    
-                    # Display results
+
                     st.success(f"**Predicted Category:** {prediction.title()}")
                     st.info(f"**Confidence:** {confidence:.1f}%")
-                    
-                    # Show all probabilities
+
                     st.subheader("Category Probabilities:")
                     prob_df = pd.DataFrame({
                         'Category': model.classes_,
                         'Probability': probabilities * 100
                     }).sort_values('Probability', ascending=False)
-                    
                     st.bar_chart(prob_df.set_index('Category'))
-                    
+
                 except Exception as e:
                     st.error(f"Error during prediction: {str(e)}")
             else:
                 st.warning("Please enter some text to classify.")
+
+
+            # --- Clear Text Button Logic ---
+            if clear_button:
+                # Reset input and rerun app
+                st.session_state["article_input"] = ""
+                st.experimental_rerun()
+
 
 # Required to let Streamlit instantiate our web app
 if __name__ == '__main__':

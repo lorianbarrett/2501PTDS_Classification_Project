@@ -1,0 +1,14 @@
+artifact_uri: mlflow-artifacts:/0/52a5970e4c6243f6b6866a297e1f036e/artifacts
+end_time: 1760898535258
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: 52a5970e4c6243f6b6866a297e1f036e
+run_name: News_Classifier_Final
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1760898531861
+status: 4
+tags: []
+user_id: lbarrett
