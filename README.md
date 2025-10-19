@@ -1,9 +1,5 @@
-##### **Please note**: Download the repository as a zipped folder, create a private repository, and upload the content to it. This way, you can collaborate with your teammates effectively.
-
-## 2501PTDS_Classification_Project
-
-# Analysing News Articles Dataset
-
+# 2501PTDS_Classification_Project  
+## Analysing News Articles Dataset
 
 ![](https://img.shields.io/badge/Python-3776AB.svg?style=for-the-badge&logo=Python&logoColor=white) [![Streamlit App](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](URL_TO_YOUR_APP)
 
@@ -11,131 +7,252 @@
   <img src="https://github.com/ereshia/2401FTDS_Classification_Project/blob/main/announcement-article-articles-copy-coverage.jpg" width="550" height="300" alt=""/>
 </div>
 
-## Table of contents
+---
+
+## Table of Contents
 * [1. Project Overview](#project-description)
 * [2. Dataset](#dataset)
 * [3. Packages](#packages)
-* [4. Environment](#environment)
+* [4. Environment Setup](#environment)
+  * [4.1 Conda Setup](#conda)
+  * [4.2 venv Setup (Alternative)](#venv)
 * [5. MLFlow](#mlflow)
 * [6. Streamlit](#streamlit)
 * [7. Team Members](#team-members)
+* [8. Troubleshooting](#troubleshooting)
+
+---
 
 ## 1. Project Overview <a class="anchor" id="project-description"></a>
 
-Your team has been hired as data science consultants for a news outlet to create classification models using Python and deploy it as a web application with Streamlit. 
-The aim is to provide you with a hands-on demonstration of applying machine learning techniques to natural language processing tasks.  This end-to-end project encompasses the entire workflow, including data loading, preprocessing, model training, evaluation, and final deployment. The primary stakeholders for the news classification project for the news outlet could include the editorial team, IT/tech support, management, readers, etc. These groups are interested in improved content categorization, operational efficiency, and enhanced user experience.
+Your team has been hired as data science consultants for a news outlet to create classification models using Python and deploy them as a web application with Streamlit.  
+The goal is to apply machine learning techniques to natural language processing (NLP) tasks — building, evaluating, and deploying models to classify news articles into topics.
 
+This project covers the full data science workflow:
+- Data loading and exploration  
+- Text preprocessing and feature engineering  
+- Model training and evaluation  
+- Model tracking with MLflow  
+- Deployment via Streamlit  
+
+**Stakeholders:** Editorial team, IT support, management, and readers — all of whom benefit from improved content categorization and enhanced user experience.
+
+---
 
 ## 2. Dataset <a class="anchor" id="dataset"></a>
-The dataset is comprised of news articles that need to be classified into categories based on their content, including `Business`, `Technology`, `Sports`, `Education`, and `Entertainment`. You can find both the `train.csv` and `test.csv` datasets [here](https://github.com/ereshia/2401FTDS_Classification_Project/tree/main/Data/processed).
 
-**Dataset Features:**
-| **Column**                                                                                  | **Description**              
-|---------------------------------------------------------------------------------------------|--------------------   
-| Headlines   | 	The headline or title of the news article.
-| Description | A brief summary or description of the news article.
-| Content | The full text content of the news article.
-| URL | The URL link to the original source of the news article.
-| Category | The category or topic of the news article (e.g., business, education, entertainment, sports, technology).
+The dataset contains news articles that need to be classified into one of the following categories:
+`Business`, `Technology`, `Sports`, `Education`, and `Entertainment`.
+
+You can find both `train.csv` and `test.csv` datasets [here](https://github.com/ereshia/2401FTDS_Classification_Project/tree/main/Data/processed).
+
+| **Column** | **Description** |
+|-------------|-----------------|
+| **Headlines** | Title of the news article |
+| **Description** | Short summary of the article |
+| **Content** | Full text of the article |
+| **URL** | Source link |
+| **Category** | The article’s true label/category |
+
+---
 
 ## 3. Packages <a class="anchor" id="packages"></a>
 
-To carry out all the objectives for this repo, the following necessary dependencies were loaded:
-+ `Pandas 2.2.2` and `Numpy 1.26`
-+ `Matplotlib 3.8.4`
- 
+The following core dependencies are required to execute this project:
 
-## 4. Environment <a class="anchor" id="environment"></a>
+- `pandas 2.2.2`
+- `numpy 1.26`
+- `matplotlib 3.8.4`
+- `scikit-learn`
+- `streamlit`
+- `mlflow`
+- `jupyter`
+- `nltk` (for tokenization, lemmatization, and stopword removal)
+- `seaborn` (for confusion matrix visualization)
+---
 
-It's highly recommended to use a virtual environment for your projects, there are many ways to do this; we've outlined one such method below. Make sure to regularly update this section. This way, anyone who clones your repository will know exactly what steps to follow to prepare the necessary environment. The instructions provided here should enable a person to clone your repo and quickly get started.
+## 4. Environment Setup <a class="anchor" id="environment"></a>
 
-### Create the new evironment - you only need to do this once
+It’s highly recommended to use a **virtual environment** to isolate dependencies.  
+Below are two options — choose whichever best fits your setup.
 
+> 💡 **Note for first-timers:**  
+> The initial setup can take several minutes (sometimes up to 20–30 on slower or corporate networks).  
+> This is normal — the environment manager needs to download and install large data science libraries for the first time.
+
+---
+
+### 4.1 Using Conda (Recommended for unrestricted setups) <a class="anchor" id="conda"></a>
+
+If you have **Anaconda** or **Miniconda** installed, follow these steps:
+
+#### 🧩 Create the environment
 ```bash
-# create the conda environment
-conda create --name <env>
+conda create --name nlp_project python=3.10
 ```
 
-### This is how you activate the virtual environment in a terminal and install the project dependencies
-
+#### 🔹 Activate the environment
 ```bash
-# activate the virtual environment
-conda activate <env>
-# install the pip package
+conda activate nlp_project
+```
+
+#### 🔹 Install project dependencies
+```bash
 conda install pip
-# install the requirements for this project
 pip install -r requirements.txt
 ```
-## 5. MLFlow<a class="anchor" id="mlflow"></a>
 
-MLOps, which stands for Machine Learning Operations, is a practice focused on managing and streamlining the lifecycle of machine learning models. The modern MLOps tool, MLflow is designed to facilitate collaboration on data projects, enabling teams to track experiments, manage models, and streamline deployment processes. For experimentation, testing, and reproducibility of the machine learning models in this project, you will use MLflow. MLflow will help track hyperparameter tuning by logging and comparing different model configurations. This allows you to easily identify and select the best-performing model based on the logged metrics.
+#### 🔹 Add environment to Jupyter (optional)
+```bash
+python -m ipykernel install --user --name=nlp_project
+```
 
-- Please have a look here and follow the instructions: https://www.mlflow.org/docs/2.7.1/quickstart.html#quickstart
+#### 🔹 Deactivate the environment
+```bash
+conda deactivate
+```
 
-## 6. Streamlit<a class="anchor" id="streamlit"></a>
+---
+
+### 4.2 Using venv (Alternative for restricted or corporate setups) <a class="anchor" id="venv"></a>
+
+> ⚠️ **Note:**  
+> Some organizations restrict software downloads, blocking external installers like Anaconda/Miniconda.  
+> In that case, use Python's built-in `venv` module to create a lightweight isolated environment.
+
+#### 🧩 Create a virtual environment
+Open your terminal or VS Code terminal and navigate to your project folder:
+```bash
+cd "C:\Users\lbarrett\@Workspace\DataScience Course\Module_7_NPL\NLP Project\2501PTDS_Classification_Project"
+```
+
+Then run:
+```bash
+python -m venv venv
+```
+
+This creates a folder called `venv` that contains your virtual environment.
+
+#### 🔹 Activate the environment
+```bash
+# On Windows
+venv\Scripts\activate
+
+# On macOS/Linux
+source venv/bin/activate
+```
+
+#### 🔹 Install dependencies
+If a `requirements.txt` file exists:
+```bash
+pip install -r requirements.txt
+```
+
+Otherwise, install manually:
+```bash
+pip install pandas numpy matplotlib scikit-learn streamlit mlflow jupyter nltk
+```
+
+#### 🔹 Download NLTK data (required for text processing)
+```bash
+python -c "import nltk; nltk.download('punkt'); nltk.download('stopwords'); nltk.download('wordnet'); nltk.download('omw-1.4'); nltk.download('punkt_tab')"
+```
+
+#### 🔹 Add environment to Jupyter (optional)
+```bash
+python -m ipykernel install --user --name=venv
+```
+
+#### 🔹 Deactivate the environment
+```bash
+deactivate
+```
+
+✅ *You now have a fully functional environment — no external tools required.*
+
+---
+
+## 5. MLFlow <a class="anchor" id="mlflow"></a>
+
+**MLflow** is used to manage and track machine learning experiments, parameters, and metrics.  
+It enables reproducibility and helps identify the best-performing models.
+
+Follow the [MLflow Quickstart Guide](https://www.mlflow.org/docs/2.7.1/quickstart.html#quickstart) to:
+- Log experiments  
+- Compare model performance  
+- Track hyperparameter tuning
+
+---
+
+## 6. Streamlit <a class="anchor" id="streamlit"></a>
 
 ### What is Streamlit?
 
-[Streamlit](https://www.streamlit.io/)  is a framework that acts as a web server with dynamic visuals, multiple responsive pages, and robust deployment of your models.
+[Streamlit](https://www.streamlit.io/) is a Python-based framework for creating interactive web applications — perfect for deploying data science models with minimal effort.
 
-In its own words:
-> Streamlit ... is the easiest way for data scientists and machine learning engineers to create beautiful, performant apps in only a few hours!  All in pure Python. All for free.
+> “Streamlit is the easiest way for data scientists to build beautiful, performant apps in only a few hours — all in pure Python.”
 
-> It’s a simple and powerful app model that lets you build rich UIs incredibly quickly.
+---
 
-[Streamlit](https://www.streamlit.io/)  takes away much of the background work needed in order to get a platform which can deploy your models to clients and end users. Meaning that you get to focus on the important stuff (related to the data), and can largely ignore the rest. This will allow you to become a lot more productive.  
+### 🔹 Description of files
+| File Name | Description |
+|------------|-------------|
+| `base_app.py` | Streamlit app definition file |
 
-##### Description of files
+---
 
-For this repository, we are only concerned with a single file:
+### 🔹 Running the Streamlit app locally
 
-| File Name              | Description                       |
-| :--------------------- | :--------------------             |
-| `base_app.py`          | Streamlit application definition. |
-
-
-#### 6.1 Running the Streamlit web app on your local machine
-
-As a first step to becoming familiar with our web app's functioning, we recommend setting up a running instance on your own local machine. To do this, follow the steps below by running the given commands within a Git bash (Windows), or terminal (Mac/Linux):
-
-- Ensure that you have the prerequisite Python libraries installed on your local machine:
-
- ```bash
- pip install -U streamlit numpy pandas scikit-learn
- ```
-
-- Navigate to the base of your repo where your base_app.py is stored, and start the Streamlit app.
-
- ```bash
- cd 2401FTDS_Classification_Project/Streamlit/
- streamlit run base_app.py
- ```
-
- If the web server was able to initialise successfully, the following message should be displayed within your bash/terminal session:
-
+Ensure the required packages are installed:
+```bash
+pip install -U streamlit numpy pandas scikit-learn
 ```
-  You can now view your Streamlit app in your browser.
 
-    Local URL: http://localhost:8501
-    Network URL: http://192.168.43.41:8501
+Then launch the app:
+```bash
+cd Streamlit
+streamlit run base_app.py
 ```
-You should also be automatically directed to the base page of your web app. This should look something like:
 
-<div id="s_image" align="center">
-  <img src="https://github.com/ereshia/2401FTDS_Classification_Project/blob/main/Streamlit_image.png" width="850" height="400" alt=""/>
-</div>
+Expected output:
+```
+You can now view your Streamlit app in your browser.
 
-Congratulations! You've now officially deployed your first web application!
+Local URL: http://localhost:8501
+```
 
-#### 6.2 Deploying your Streamlit web app
+---
 
-- To deploy your app for all to see, click on `deploy`.
-  
-- Please note: If it's your first time deploying it will redirect you to set up an account first. Please follow the instructions.
+### 🔹 Deploying to Streamlit Cloud
 
-## 7. Team Members<a class="anchor" id="team-members"></a>
+1. Push your latest code to GitHub.  
+2. Visit [Streamlit Cloud](https://share.streamlit.io/).  
+3. Sign in using GitHub and click **New App → Select Repo**.  
+4. Set `Streamlit/base_app.py` as the entry file.  
 
-| Name                                                                                        |  Email              
-|---------------------------------------------------------------------------------------------|--------------------             
-| [Oludare Adekunle](https://github.com/DareSandtech)                                         | oadekunle@sandtech.com
-| [Claudia Elliot-Wilson]()                                                                   | celliot-wilson@sandtech.com
+Your model will now be live and shareable via a public URL 🎉
+
+---
+
+## 7. Team Members <a class="anchor" id="team-members"></a>
+
+| Name | Email |
+|------|--------|
+| [Lorian Barrett](https://github.com/lorianbarrett) | lorian.barrett@ninetyone.com |
+
+> **Note:** This is an individual project completed by Lorian Barrett.  
+> [Oludare Adekunle](https://github.com/DareSandtech) and [Claudia Elliot-Wilson] served as course conveners for guidance and oversight.
+
+---
+
+## 8. Troubleshooting <a class="anchor" id="troubleshooting"></a>
+
+| Issue | Solution |
+|-------|-----------|
+| `conda` not recognized | Ensure Anaconda/Miniconda is installed and added to your PATH, or use the `venv` setup. |
+| `venv` won’t activate in VS Code | Make sure your terminal shell is set to PowerShell or Command Prompt, not Git Bash. |
+| Long installation time | This is normal for first-time setup — large libraries (e.g. pandas, scikit-learn) may take several minutes to download and compile. |
+| Jupyter doesn’t detect kernel | Run `python -m ipykernel install --user --name=<env_name>` and restart VS Code. |
+| Streamlit app not launching | Check that all required libraries are installed, then rerun `streamlit run base_app.py`. |
+
+---
