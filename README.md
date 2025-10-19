@@ -17,11 +17,13 @@
 * [4. Environment Setup](#environment)
   * [4.1 Conda Setup](#conda)
   * [4.2 venv Setup (Alternative)](#venv)
-* [5. MLFlow](#mlflow)
-* [6. Streamlit](#streamlit)
+* [5. MLflow Experiment Tracking](#mlflow)
+* [6. Streamlit Deployment](#streamlit)
 * [7. Team Members](#team-members)
 * [8. Troubleshooting](#troubleshooting)
 * [9. Results Summary](#results-summary)
+* [10. How to Run the App](#run-app)
+
 
 ---
 
@@ -308,4 +310,26 @@ The final model was deployed with **Streamlit**, allowing users to:
 This completes an **end-to-end NLP project** — from raw data → model training → evaluation → interactive deployment.
 
 ---
+
+---
+
+## 10. How to Run the App <a class="anchor" id="run-app"></a>
+
+Follow the steps below to activate your virtual environment and launch the Streamlit web application.
+
+### 🪟 For Windows Users
+1. Open **VS Code** or **Command Prompt**, then navigate to your project folder:
+   ```bash
+   cd "C:\Users\lbarrett\@Workspace\DataScience Course\Module_7_NPL\NLP Project\2501PTDS_Classification_Project"
+
+2. Activate your virtual environment:
+```bash
+venv\Scripts\activate
+
+(Your terminal prompt should now show (venv) — this means your environment is active.)
+
+3. Run Streamlit app
+```bash
+streamlit run Streamlit/base_app.py
+
 
