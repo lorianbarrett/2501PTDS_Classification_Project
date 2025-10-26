@@ -2,7 +2,8 @@
 # Lorian Barrett (Individual Project)
 ## Analysing News Articles Dataset
 
-![](https://img.shields.io/badge/Python-3776AB.svg?style=for-the-badge&logo=Python&logoColor=white) [![Streamlit App](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](URL_TO_YOUR_APP)
+![](https://img.shields.io/badge/Python-3776AB.svg?style=for-the-badge&logo=Python&logoColor=white) [![Streamlit App](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://2501ptdsclassificationproject-9vemkbuksitvq9ey8pnoxy.streamlit.app/)
+
 
 <div id="main image" align="center">
   <img src="https://github.com/ereshia/2401FTDS_Classification_Project/blob/main/announcement-article-articles-copy-coverage.jpg" width="550" height="300" alt=""/>
