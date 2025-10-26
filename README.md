@@ -2,11 +2,8 @@
 # Lorian Barrett (Individual Project)
 ## Analysing News Articles Dataset
 
-![](https://img.shields.io/badge/Python-3776AB.svg?style=for-the-badge&logo=Python&logoColor=white)
-<a href="https://2501ptdsclassificationproject-9vemkbuksitvq9ey8pnoxy.streamlit.app/" target="_blank">
-  <img src="https://static.streamlit.io/badges/streamlit_badge_black_white.svg" alt="Open in Streamlit"/>
-</a>
-
+[![Python](https://img.shields.io/badge/Python-3776AB.svg?style=for-the-badge&logo=Python&logoColor=white)](#4-environment-setup)
+[![Streamlit App](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://2501ptdsclassificationproject-9vemkbuksitvq9ey8pnoxy.streamlit.app/)
 
 
 <div id="main image" align="center">
